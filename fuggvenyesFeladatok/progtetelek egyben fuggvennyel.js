@@ -1,5 +1,4 @@
-//Programozási tételek egyben, függvényekkel megoldva
-
+<script>
 //20 elemű tömb 1-100-ig  randomszámmal generálása függvénnyel
 function Tombgeneralasa(){
 	let generaltRandomTomb=[];
@@ -8,6 +7,7 @@ function Tombgeneralasa(){
 	}
 	return generaltRandomTomb;
 }
+
 //global scope-ú tömb létrehozása, amivel a tételekben dolgozunk majd.
 let generaltRandomTomb=Tombgeneralasa();
 
@@ -16,8 +16,9 @@ let generaltRandomTomb=Tombgeneralasa();
 //Generált tömb kiíratása függvénnyel
 
 function GeneraltTombKiiratas(generaltRandomTomb){
-	for (let i=0;i<=generaltRandomTomb.length;i++){
-		document.write(`A véletlenszám 20 elemű tömb: ${generaltRandomTomb}`+"<br>");
+	document.write("A tömb: ");
+	for (let i=0;i<generaltRandomTomb.length;i++){
+		document.write(generaltRandomTomb[i]+",");
 	}
 }
 
@@ -28,7 +29,7 @@ document.write("<hr>Összegzés tétele függvénnyel generált tömbből: <br>"
 
 function Osszegzes(generaltRandomTomb){
 	let osszeg=0;
-	for (let i=0;i<=generaltRandomTomb.length;i++){
+	for (let i=0;i<generaltRandomTomb.length;i++){
 		osszeg+=generaltRandomTomb[i];
 	}	
 	document.write("A tömb elemeinek összege:"+osszeg);
@@ -56,14 +57,13 @@ document.write("<hr>Megszámlálás tétele páros számokra, kigyűjtése új t
 function Megszamlalas(generaltRandomTomb){
 	let parosSzamTomb=[];
 	let parosSzamDarabszam=0;
-	for (let i=0;i<=generaltRandomTomb.length;i++){){
+	for (let i=0;i<generaltRandomTomb.length;i++){
 		if (generaltRandomTomb[i]%2==0){
 			parosSzamTomb.push(generaltRandomTomb[i]);
 			parosSzamDarabszam++;
 		}
 	}
 	document.write("A tömbben "+parosSzamDarabszam+" páros szám található.");
-	document.write("A tömb elemei: ");
 	GeneraltTombKiiratas(parosSzamTomb);
 }
 
@@ -92,4 +92,4 @@ function MinimumMaximumKereses(generaltRandomTomb){
 }
 MinimumMaximumKereses(generaltRandomTomb);
 
-
+</script>
