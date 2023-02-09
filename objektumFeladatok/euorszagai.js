@@ -24,10 +24,7 @@ const EuropaiUnio = [{
         orszag: "Dánia",
         csatlakozas: "1973.01.01"
     },
-    {
-        orszag: "Egyesült Királyság",
-        csatlakozas: "1973.01.01"
-    },
+
     {
         orszag: "Észtország",
         csatlakozas: "2004.05.01"
@@ -113,6 +110,7 @@ const EuropaiUnio = [{
         csatlakozas: "2004.05.01"
     }
 ];
+
 
 document.write(`Az Eu-nak ${EuropaiUnio.length} országa van`);
 
@@ -253,7 +251,7 @@ function StatisztikaEves(){
                 }
             }     
             evesOrszagok.push({csatlakozasiEv:EuropaiUnio[i].csatlakozas.substring(0,4),orszagDarabszam:orszagDb});
-        };
+        }
      }
 }
 
@@ -276,3 +274,54 @@ function StatisztikaKiiratas(){
 }
 
 StatisztikaKiiratas();
+
+//Az EU-hoz hány ország csatlakozott x. évben?
+function HanyOrszagCsatlakozott( mikor ){
+	let csatlakozott=0;
+	for (let i=0;i<EuropaiUnio.length;i++){
+ 		if (EuropaiUnio[i].csatlakozas.includes(mikor)){
+ 			csatlakozott++;
+ 		}
+     }
+     (csatlakozott)
+     ?document.write("<br>"+`Az Eu-hoz ${mikor} évben ${csatlakozott} ország csatlakozott.`)
+     :document.write("<br>"+`Az Eu-hoz ${mikor} évben nem csatlakozott ország.`);
+}
+
+HanyOrszagCsatlakozott("2005");
+HanyOrszagCsatlakozott("1995");
+
+
+//Adott ország csatlakozott-e
+
+let keresettOrszag=prompt("Adja meg a keresett ország nevét:");
+
+function OrszagCsatlakozottE( keresettOrszag ){
+    for(let i=0;i<EuropaiUnio.length;i++){
+    	if(EuropaiUnio[i].orszag==keresettOrszag){
+        	return true;
+        }
+    }
+
+}
+
+
+EredmenyKiiro(OrszagCsatlakozottE(keresettOrszag), `${keresettOrszag} csatlakozott az EU-hoz`, `${keresettOrszag} nem csatlakozott az EU-hoz`);
+
+
+//Adott hónapban volt-e csatlakozás
+let keresettHonap=prompt("Adja meg a keresett hónapot számokkal:");
+
+function HaviCsatlakozas(keresettHonap){
+
+	for (let i=0;i<EuropaiUnio.length;i++){
+		if (EuropaiUnio[i].csatlakozas.slice(5,7) == keresettHonap) {
+   		return true;
+        }
+	}
+    return false; 
+}
+
+EredmenyKiiro(HaviCsatlakozas(keresettHonap), `${keresettHonap} hónapban volt csatlakozás az EU-hoz`, `${keresettHonap} hónapban nem volt csatlakozás az EU-hoz`);
+
+
