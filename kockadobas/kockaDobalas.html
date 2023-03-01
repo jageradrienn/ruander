@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width", initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Kockadobás</title>
+<style>
+    #kockaKep{
+        width:100px;
+        height:100px;
+        margin: 0px auto;
+    }
+
+    p{
+        margin-top: 10px;
+        text-align: center;  
+    }
+
+</style>
+
+</head>
+<body>
+    
+   <div class="container-fluid">
+    <div id="kockaKep">
+        <img src="./1.png" alt="kocka">
+    </div>
+    <button id="kockadobo" class="form-control btn btn-success mt-3">Kockadobás</button>
+    <p>Kocka dobási statisztika</p>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table class="table table-striped table-hover table-dark table-sm">
+        <thead>
+            <tr>
+                <th>Dobás értéke</th>
+                <th>Dobás mennyisége</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td id="egyes">0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td id="kettes">0</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td id="harmas">0</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td id="negyes">0</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td id="otos">0</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td id="hatos">0</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Dobások összege</td>
+                <td id="osszesen">0</td>
+            </tr>
+            <tr>
+                <td>Dobások darabszáma</td>
+                <td id="dobasDb">0</td>
+            </tr>
+        </tfoot>
+          </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <p>Egyéb dobási statisztikák</p>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table class="table table-striped table-hover table-dark table-sm">
+            <thead>
+            <tr>
+                <th>Feladat</th>
+                <th>Megoldása</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Mennyi volt a dobások összegének átlaga?</td>
+                <td id="atlag">0</td>
+            </tr>
+            <tr>
+                <td>Volt-e 6-ost tartalmazó dobás az első 10 dobásból?</td>
+                <td id="tizbol">0</td>
+            </tr>
+            <tr>
+                <td>Volt-e egymás után két 3-ast tartalmazó dobás?</td>
+                <td id="ketHarmas">0</td>
+            </tr>
+            <tr>
+                <td>A dobások hány százalékában fordult elő 2-es dobás?</td>
+                <td id="kettesek">0</td>
+            </tr>
+            <tr>
+                <td>Összesen melyik számot mutatta a legkevesebbszer a kocka?</td>
+                <td id="legkevesebb">0</td>
+            </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+  </div>
+
+
+
+
+
+    <script>
+       kockadobo.addEventListener("click",kockaMegjelenites);
+
+    let dobasok=[];
+
+   function kockaMegjelenites(){
+    let kockaSzam=KockaDobas();
+    document.querySelector("img").setAttribute("src",`./${kockaSzam}.png`);
+    dobasok.push(kockaSzam);
+    StatisztikaKiir(DobasokSzama());
+
+    
+    document.querySelector("#dobasDb").innerHTML=dobasok.length;
+    document.querySelector("#atlag").innerHTML=((DobasokSzama()[0])/dobasok.length).toFixed(2);
+    document.querySelector("#tizbol").innerHTML= Tizbol();
+    document.querySelector("#ketHarmas").innerHTML= KetHarmas();
+    document.querySelector("#kettesek").innerHTML= Kettesek();
+    document.querySelector("#legkevesebb").innerHTML= Legkevesebb();
+    
+    }
+
+function KockaDobas(){
+        return (Math.round(Math.random()*(6-1)+1));
+    }
+
+
+
+function DobasokSzama() {
+            let dobasmennyiseg=[0,0,0,0,0,0,0]; 
+            for(let i=0;i<dobasok.length;i++){
+                    dobasmennyiseg[0]+=dobasok[i];
+                    dobasmennyiseg[dobasok[i]]++;
+            }
+            return dobasmennyiseg;
+            
+        }           
+
+function StatisztikaKiir(eredmenyek){
+    document.querySelector("#egyes").innerHTML=eredmenyek[1];
+    document.querySelector("#kettes").innerHTML=eredmenyek[2];
+    document.querySelector("#harmas").innerHTML=eredmenyek[3];
+    document.querySelector("#negyes").innerHTML=eredmenyek[4];
+    document.querySelector("#otos").innerHTML=eredmenyek[5];
+    document.querySelector("#hatos").innerHTML=eredmenyek[6];
+    document.querySelector("#osszesen").innerHTML=eredmenyek[0];
+}
+
+
+function Tizbol(){
+    let eredmeny="";
+   if (dobasok.length<10) {eredmeny= "Nincs még 10 dobás"}
+   else {
+        for (let i=0;((i<=10) && (dobasok[i]!=6));i++){
+             eredmeny= (i==10) ? "Nem volt 6-os" : "Volt 6-os"
+        }
+    }
+    return eredmeny;
+}
+
+function KetHarmas(){
+    let talalt = false;
+    dobasok.map( (currentValue, index, array) => {
+        (currentValue == 3) 
+        ? ( (array[index +1] ==3) 
+            ? talalt=true
+            : currentValue) 
+        : currentValue;
+    })
+    return (talalt) ? "Volt két egymást követő 3-as dobás" : "Nem volt két egymást követő 3-as dobás"
+}
+
+function Kettesek(){
+    let db=0;
+    dobasok.map( (item) => (item == 2) ? (db++) : item)
+    return `${((db/dobasok.length)*100).toFixed(0)}%`
+}
+
+function Legkevesebb(){
+    let dobasokStat=DobasokSzama();
+    let min = Math.min(...dobasokStat);
+    let tobbMinDobas = [];
+    for (let i=0; i< dobasokStat.length;i++){
+        if (dobasokStat[i] == min) {tobbMinDobas.push(i)}
+    }
+    let eredmeny="";
+    tobbMinDobas.map((item) => eredmeny += `${item}, ` );
+    return eredmeny
+}
+
+    </script>
+
+</body>
+</html>
