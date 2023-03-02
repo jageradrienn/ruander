@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=", initial-scale=1.0">
+    <title>Telekocsi</title>
+    <link rel="stylesheet" href="./telekocsi.css">
+</head>
+<body>
+<div class="tartalom">
+    <h1>Telekocsi</h1>
+    <div class="menu">
+        <ul>
+          <li> <a href="./telekocsi.html">Bemutatkozás</li> </a>
+          <li>Sofőröknek</li>
+          <li>Utasoknak</li>
+          <li>Bejelentkezés</li>
+          <li> <a href="./regisztracio.html">Regisztráció</li> </a>
+     </ul>
+    </div>
+    <h2>Regisztráció</h2>
+    <form action="">
+        
+        <div>
+            <label for="nev">Név:</label>
+            <input type="text" id="nev">
+        </div>
+
+        <div>
+            <label for="e-mail">Email cím:</label>
+            <input type="email" id="e-mail">
+        </div>
+
+        <div>
+            <label for="jelszo">Jelszó:</label>
+            <input type="password" id="jelszo">
+        </div>
+
+        <div>
+            <label for="jelszoIsmet">Jelszó ismét:</label>
+            <input type="password" id="jelszoIsmet">
+        </div>
+        
+        <input type="button" id="mentes" value="Mentés">
+    </form>
+</div>
+
+<script>
+    mentes.addEventListener("click", Ellenorzes);
+
+    function Ellenorzes(){
+        let jelszoElem=document.querySelector("#jelszo");
+        let jelszoIsmet=document.querySelector("#jelszoIsmet");
+        if (jelszoElem.value=="") {alert("Kérem töltse ki a jelszó mezőt!")}
+        else if (jelszoElem.value!=jelszoIsmet.value) {
+            alert("A két jelszó nem egyforma!")
+        }
+    }
+
+</script>
+
+
+</body>
+</html>
