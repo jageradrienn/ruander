@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width" , initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Kockadobás</title>
+    <style>
+        #kockaKep01,
+        #kockaKep02,
+        #kockaKep03 {
+            width: 100px;
+            height: 100px;
+
+        }
+
+        #igazito {
+            width: 320px;
+            margin: 0px auto;
+        }
+
+        p {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div id="igazito">
+            <img id="kockaKep01" src="./1.png" alt="kocka">
+            <img id="kockaKep02" src="./1.png" alt="kocka">
+            <img id="kockaKep03" src="./1.png" alt="kocka">
+        </div>
+        <button id="kockadobo" class="form-control btn btn-success mt-3">Kockadobás</button>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <p>Kocka dobási statisztika</p>
+                <table class="table table-striped table-hover table-dark table-sm">
+                    <thead>
+                        <tr>
+                            <th>Dobás értéke</th>
+                            <th>Dobás mennyisége</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td id="egyes">0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td id="kettes">0</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td id="harmas">0</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td id="negyes">0</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td id="otos">0</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td id="hatos">0</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>Dobások összege</td>
+                            <td id="osszesen">0</td>
+                        </tr>
+                        <tr>
+                            <td>Dobások darabszáma</td>
+                            <td id="dobasDb">0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="col-md-7">
+                <p>Egyéb dobási statisztikák</p>
+                <table class="table table-striped table-hover table-dark table-sm">
+                    <thead>
+                        <tr>
+                            <th>Feladat</th>
+                            <th>Megoldása</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mennyi volt a dobások összegének átlaga?</td>
+                            <td id="atlag">0</td>
+                        </tr>
+                        <tr>
+                            <td>Volt-e 6-ost tartalmazó dobás az első 10 dobásból?</td>
+                            <td id="tizbol">0</td>
+                        </tr>
+                        <tr>
+                            <td>Volt-e egymás után két 3-ast tartalmazó dobás?</td>
+                            <td id="ketHarmas">0</td>
+                        </tr>
+                        <tr>
+                            <td>A dobások hány százalékában fordult elő 2-es dobás?</td>
+                            <td id="kettesek">0</td>
+                        </tr>
+                        <tr>
+                            <td>Mennyi volt a dobások összegének maximuma?</td>
+                            <td id="legnagyobb">0</td>
+                        </tr>
+                        <tr>
+                            <td>Hány dobásban fordult elő legalább egy 6-os szám?</td>
+                            <td id="hatossal">0</td>
+                        </tr>
+                        <tr>
+                            <td>Hányszor fordult elő a 6-os szám a dobások során összesen?</td>
+                            <td id="hatosok">0</td>
+                        </tr>
+                        <tr>
+                            <td>Volt-e három 6-ost tartalmazó dobás?</td>
+                            <td id="triplaHatos">0</td>
+                        </tr>
+                        <tr>
+                            <td>Hányszor dobtunk mindhárom kockával azonos számot?</td>
+                            <td id="triplaDobasok">0</td>
+                        </tr>
+                        <tr>
+                            <td>Melyik dobás eredményezett három különböző számot?</td>
+                            <td id="kulonbozoDobasok">0</td>
+                        </tr>
+                        <tr>
+                            <td>A dobások hány százalékában fordult elő valamelyik kockán a 2-es?</td>
+                            <td id="kettesArany">0</td>
+                        </tr>
+                        <tr>
+                            <td>A dobások hány százalékában fordult elő valamelyik kockán a 4-es?</td>
+                            <td id="negyesArany">0</td>
+                        </tr>
+                        <tr>
+                            <td>A dobások hány százalékában fordult elő valamelyik kockán a 6-os?</td>
+                            <td id="hatosArany">0</td>
+                        </tr>
+                        <tr>
+                            <td>Volt három kockán a legnagyobb kocka egyenlő a másik kettő kocka össszegével?</td>
+                            <td id="kockaOssz">Nem volt még</td>
+                        </tr>
+                        <tr>
+                            <td>Összesen melyik számot mutatták a legkevesebbszer a kockák?</td>
+                            <td id="legkevesebb">0</td>
+                        </tr>
+                        <tr>
+                            <td>Milyen összeg fordult elő többször is?</td>
+                            <td id="tobbOsszeg">0</td>
+                        </tr>
+                        
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+    <script>
+   /*
+
+        1. Mennyi volt a dobások összegének átlaga?
+        2. Mennyi volt a dobások összegének maximuma?
+        3. Hány dobásban fordult elő legalább egy 6-os szám?
+        4. Hányszor fordult elő a 6-os szám a dobások során összesen?
+        5. Volt-e három 6-ost tartalmazó dobás?
+        6. Hányszor dobtunk mindhárom kockával azonos számot?
+        7. Melyik dobás eredményezett három különböző számot?
+        8. A dobások hány százalékában fordult elő valamelyik kockán 2-es, 4-es, vagy 6-os?
+        9. Volt-e olyan dobás, amikor a legnagyobb számot mutató kocka értéke a másik két kocka értékének összege lett? Ha igen, mik voltak ezek a számok?
+        10. Összesen melyik számot mutatták a legkevesebbszer a kockák?
+        11. Milyen összeg fordult elő többször is?
+        
+
+    */
+    
+        let dobasok = [];
+        let dobasOsszegek=[]; 
+        kockadobo.addEventListener("click", () => { kockaMegjelenites(3) });
+
+
+        function kockaMegjelenites(kockaDbSzam) {
+            let megtortentDobasok = TobbKockaDobasa(kockaDbSzam);
+            for (let i = 0; i < megtortentDobasok.length; i++) {
+                dobasok.push(megtortentDobasok[i]);
+            }
+            dobasOsszegek.push(megtortentDobasok[0]+megtortentDobasok[1]+megtortentDobasok[2]);
+            let generaltStatisztika = DobasokSzama();
+            StatisztikaKiir(generaltStatisztika);
+
+            document.querySelector("#kockaKep01").setAttribute("src", `./${megtortentDobasok[0]}.png`);
+            document.querySelector("#kockaKep02").setAttribute("src", `./${megtortentDobasok[1]}.png`);
+            document.querySelector("#kockaKep03").setAttribute("src", `./${megtortentDobasok[2]}.png`);
+
+            document.querySelector("#dobasDb").innerHTML = dobasok.length;
+            document.querySelector("#atlag").innerHTML = ((DobasokSzama()[0]) / dobasok.length).toFixed(2);
+            document.querySelector("#tizbol").innerHTML = Tizbol();
+            document.querySelector("#ketHarmas").innerHTML = KetHarmas();
+            document.querySelector("#kettesek").innerHTML = Kettesek();
+            
+
+            //Tanár megoldásai:
+            MaxDobas(megtortentDobasok);
+            VoltBenneHatos(megtortentDobasok);
+            HatosokSzama(megtortentDobasok);
+            TriplaHatos(megtortentDobasok);
+            Egyformak(megtortentDobasok);
+            Kulonbozoek(megtortentDobasok);
+            KettoNegyHat(generaltStatisztika);
+
+            // szorgalmi megoldásaim:
+            KockakOsszege(megtortentDobasok);
+            Legkevesebb(generaltStatisztika);
+            TobbOsszeg();
+        }
+
+        function KockaDobas() {
+            return (Math.round(Math.random() * (6 - 1) + 1));
+        }
+
+        function TobbKockaDobasa(kockaDbSzam) {
+            let triplaDobas = [];
+            for (let i = 0; i < kockaDbSzam; i++) {
+                triplaDobas.push(KockaDobas());
+            };
+            return triplaDobas;
+        }
+
+
+        function DobasokSzama() {
+
+            let dobasmennyiseg = [0, 0, 0, 0, 0, 0, 0];
+            for (let i = 0; i < dobasok.length; i++) {
+                dobasmennyiseg[0] += dobasok[i];
+                dobasmennyiseg[dobasok[i]]++;
+            }
+            return dobasmennyiseg;
+
+        }
+
+        function StatisztikaKiir(eredmenyek) {
+            document.querySelector("#egyes").innerHTML = eredmenyek[1];
+            document.querySelector("#kettes").innerHTML = eredmenyek[2];
+            document.querySelector("#harmas").innerHTML = eredmenyek[3];
+            document.querySelector("#negyes").innerHTML = eredmenyek[4];
+            document.querySelector("#otos").innerHTML = eredmenyek[5];
+            document.querySelector("#hatos").innerHTML = eredmenyek[6];
+            document.querySelector("#osszesen").innerHTML = eredmenyek[0];
+        }
+
+
+        function Tizbol() {
+            let eredmeny = "";
+            if (dobasok.length < 10) { eredmeny = "Nincs még 10 dobás" }
+            else {
+                for (let i = 0; ((i <= 10) && (dobasok[i] != 6)); i++) {
+                    eredmeny = (i == 10) ? "Nem volt 6-os" : "Volt 6-os"
+                }
+            }
+            return eredmeny;
+        }
+
+        function KetHarmas() {
+            let talalt = false;
+            dobasok.map((currentValue, index, array) => {
+                (currentValue == 3)
+                    ? ((array[index + 1] == 3)
+                        ? talalt = true
+                        : currentValue)
+                    : currentValue;
+            })
+            return (talalt) ? "Volt két egymást követő 3-as dobás" : "Nem volt két egymást követő 3-as dobás"
+        }
+
+        function Kettesek() {
+            let db = 0;
+            dobasok.map((item) => (item == 2) ? (db++) : item)
+            return `${((db / dobasok.length) * 100).toFixed(0)}%`
+        }
+
+
+
+        //Tanár megoldásai:
+
+        //2. Mennyi volt a dobások összegének maximuma?
+        function MaxDobas(aktDobasok) {
+            let aktDobasOsszeg = aktDobasok[0] + aktDobasok[1] + aktDobasok[2];
+            let eddigiLegnagyobb = document.querySelector("#legnagyobb").innerHTML;
+            if (aktDobasOsszeg > eddigiLegnagyobb) {
+                document.querySelector("#legnagyobb").innerHTML = aktDobasOsszeg;
+            }
+        }
+        //3. Hány dobásban fordult elő legalább egy 6-os szám?
+        function VoltBenneHatos(aktDobasok) {
+            if (aktDobasok[0] == 6 || aktDobasok[1] == 6 || aktDobasok[2] == 6) {
+                let regiAdat = document.querySelector("#hatossal").innerHTML;
+                document.querySelector("#hatossal").innerHTML = Number(regiAdat) + 1;
+            }
+        }
+
+        //4. Hányszor fordult elő a 6-os szám a dobások során összesen?
+        function HatosokSzama(aktDobasok) {
+            let regiAdat = document.querySelector("#hatosok").innerHTML;
+            if (aktDobasok[0] == 6) {
+                regiAdat++;
+            }
+            if (aktDobasok[1] == 6) {
+                regiAdat++;
+            }
+            if (aktDobasok[2] == 6) {
+                regiAdat++;
+            }
+            document.querySelector("#hatosok").innerHTML = regiAdat;
+        }
+        //5. Volt-e három 6-ost tartalmazó dobás?
+        function TriplaHatos(aktDobasok) {
+            if (aktDobasok[0] == 6 && aktDobasok[1] == 6 && aktDobasok[2] == 6) {
+                let regiAdat = document.querySelector("#triplaHatos").innerHTML;
+                if (regiAdat == "nem volt") {
+                    document.querySelector("#triplaHatos").innerHTML = "volt";
+                }
+                else { }
+            }
+        }
+        //6. Hányszor dobtunk mindhárom kockával azonos számot?
+        function Egyformak(aktDobasok) {
+            //triplaDobasok
+            if (aktDobasok[0] == aktDobasok[1] && aktDobasok[1] == aktDobasok[2]) {
+                let regiAdat = document.querySelector("#triplaDobasok").innerHTML;
+                document.querySelector("#triplaDobasok").innerHTML = Number(regiAdat) + 1;
+            }
+        }
+        //7. Melyik dobás eredményezett három különböző számot?
+        function Kulonbozoek(aktDobasok) {
+            //kulonbozoDobasok
+            if (aktDobasok[0] != aktDobasok[1] && aktDobasok[1] != aktDobasok[2] && aktDobasok[0] != aktDobasok[2]) {
+                let regiAdat = document.querySelector("#kulonbozoDobasok").innerHTML;
+                document.querySelector("#kulonbozoDobasok").innerHTML = Number(regiAdat) + 1;
+            }
+        }
+        //8. A dobások hány százalékában fordult elő valamelyik kockán 2-es, 4-es, vagy 6-os?
+        function KettoNegyHat(eredmenyek) {
+            let kettesArany = Math.round((eredmenyek[2] / dobasok.length) * 100);
+            let negyesArany = Math.round((eredmenyek[4] / dobasok.length) * 100);
+            let hatosArany = Math.round((eredmenyek[6] / dobasok.length) * 100);
+            document.querySelector("#kettesArany").innerHTML = kettesArany + "%";
+            document.querySelector("#negyesArany").innerHTML = negyesArany + "%";
+            document.querySelector("#hatosArany").innerHTML = hatosArany + "%";
+        }
+
+        //Volt-e olyan dobás, amikor a legnagyobb számot mutató kocka értéke a másik két kocka értékének összege lett? Ha igen, mik voltak ezek a számok?
+        
+        function KockakOsszege(aktDobasok){
+            let max=Math.max(...aktDobasok);
+            if ((max== aktDobasok[0]+aktDobasok[1]) || (max== aktDobasok[0]+aktDobasok[2]) || (max== aktDobasok[1]+aktDobasok[2])) {
+                document.querySelector("#kockaOssz").innerHTML = `A legnagyobb: ${max}, ezekből: ${aktDobasok[0]}, ${aktDobasok[1]}, ${aktDobasok[2]}`;
+            }
+
+        }
+
+
+        //Összesen melyik számot mutatták a legkevesebbszer a kockák?
+        function Legkevesebb(eredmeny) {
+            
+            let min = Math.min(...eredmeny);
+            let tobbMinDobas = "";
+            eredmeny.map( (item, index, eredmeny) => {
+                    if (item == min) { tobbMinDobas+=`${index},` }
+                } );
+         document.querySelector("#legkevesebb").innerHTML = tobbMinDobas;
+
+        }
+
+       // Milyen összeg fordult elő többször is?
+
+function TobbOsszeg(){
+            let tobbAzonosOsszegDobas = [];   
+            let keresendo=0;
+            for (let i=0;i<dobasOsszegek.length;i++){
+                keresendo=dobasOsszegek[i];
+                 if (dobasOsszegek.filter( (item ) => item==keresendo).length>=2) {
+                    if ( (tobbAzonosOsszegDobas.filter( (item ) => item==keresendo)).length == 0 ){tobbAzonosOsszegDobas.push(dobasOsszegek[i])}
+                    
+                 }
+            }
+            document.querySelector("#tobbOsszeg").innerHTML = tobbAzonosOsszegDobas.join(",");
+}
+    </script>
+
+</body>
+
+</html>
