@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery feladatsor</title>
+    <style>
+        #circle {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            border: 1px dotted aqua;
+            border-radius: 50%;
+            box-shadow: 3px 3px 5px black;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        #hello {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        #fader {
+            position: absolute;
+            top: 180px;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+
+        #kettes {
+            position: absolute;
+            top: 250px;
+            left: 50%;
+            transform: translate(-40%, 0px);
+        }
+
+        #harmas {
+            position: absolute;
+            top: 350px;
+            left: 50%;
+            transform: translate(-40%, 0px);
+        }
+
+        #negyes {
+            position: absolute;
+            top: 450px;
+            left: 50%;
+            transform: translate(-40%, 0px);
+        }
+
+        #kep{
+            width:300px;
+            height:300px;
+            display:block;
+        }
+
+        #negyesV2 {
+            position: absolute;
+            top: 550px;
+            left: 50%;
+            transform: translate(-40%, 0px);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="circle"></div>
+    <button type="button" id="hello">Hello/Szia</button>
+    <button type="button" id="fader">Elrejtesz/Megjelenítesz</button>
+    <div id="kettes">
+        <input type="text" id="textMezo" placeholder="Írj be egy szót!">
+        <p>A mezőbe beírt karakterek száma: <span id="karakterek">0</span></p>
+    </div>
+
+    <div id="harmas">
+        <label for="pswMezo">Adjon meg egy jelszót!</label>
+        <input type="password" id="pswMezo" >
+        <button type="button" id="pwsHider">Jelszó megjelenítés/elrejtés</button>
+        
+    </div>
+
+    <div id="negyes">
+        
+        <input type="number" id="allapErtek" placeholder="Hőmérséklet">
+        <button type="button" id="state">Állapot meghatározás</button>
+        <p>A megadott hőmérséklet alapján az állapot: <span id="allapotok"></span></p>
+        
+          
+    </div>
+
+    <div id="negyesV2">
+        <p>Hőmérsékletek</p>
+        <input type="range" min="-200" max="200" id="homerseklet">
+        <p>A megadott hőmérséklet: <span id="fok"></span></p>
+        <img src="./ice.jpg" alt="Jég" id="kep">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $("#hello").click(function () {
+                $("#circle").fadeOut("slow").fadeIn(2000);
+            })
+
+            $("#fader").click(function () {
+                $("#circle").fadeToggle("slow");
+            })
+
+            //2-es
+            $("#textMezo").focus(function(){
+                let counter=0;
+                $("#textMezo").keyup(function(){
+                    counter++;
+                    $("#karakterek").html(counter);
+                })
+            })
+
+            //3-as
+
+            $("#pwsHider").click(function () {
+                if($("#pswMezo").attr("type")=="password"){
+                    $("#pswMezo").attr("type", "text");
+                }
+                else{
+                    $("#pswMezo").attr("type", "password");
+                }
+                
+            })
+
+
+            //4es
+
+            $("#state").click(function () {
+                if($("#allapErtek").val()<0){
+                    $("#allapotok").html("Jég");
+                }
+                else if ($("#allapErtek").val()>100 ) {
+                    $("#allapotok").html("Gőz");
+                }
+                else{
+                    $("#allapotok").html("Víz");
+                }
+                
+            })
+
+            //4-es  ver2.
+            $("#homerseklet").change(function () {
+                if($("#homerseklet").val()<0){
+                    $("#fok").html($("#homerseklet").val());                    
+                    $("#kep").attr("src","./ice.jpg");
+                    $("#kep").attr("alt","Jég");
+                }
+                else if ($("#homerseklet").val()>100 ) {  
+                    $("#fok").html($("#homerseklet").val());                   
+                   $("#kep").attr("src","./steam.jpg");
+                    $("#kep").attr("alt","Gőz");
+                    
+                }
+                else{                
+                    $("#fok").html($("#homerseklet").val());     
+                    $("#kep").attr("src","./water.jpg");
+                    $("#kep").attr("alt","Víz");
+                }
+                
+            })
+
+
+
+        })
+
+
+
+
+    </script>
+
+</body>
+
+</html>
