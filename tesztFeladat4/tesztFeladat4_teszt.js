@@ -65,28 +65,28 @@ function Teszt03() {
 
 function Teszt04() {
     try {
-        FuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Kék az ég és ragyogó a nap!", "KékAzÉgÉsRagyogóANap!", camelCaseGenerator("Kék az ég és ragyogó a nap!"));
+        FuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Kék az ég és ragyogó a nap!", "kékAzÉgÉsRagyogóANap!", camelCaseGenerator("Kék az ég és ragyogó a nap!"));
     }
     catch {
-        HibasFuggvenyFuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Kék az ég és ragyogó a nap!", "KékAzÉgÉsRagyogóANap!");
+        HibasFuggvenyFuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Kék az ég és ragyogó a nap!", "kékAzÉgÉsRagyogóANap!");
     }
 }
 
 function Teszt05() {
     try {
-        FuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Nyári víg szellő szalad a lombok között!", "NyáriVígSzellőSzaladALombokKözött!", camelCaseGenerator("Nyári víg szellő szalad a lombok között!"));
+        FuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Nyári víg szellő szalad a lombok között!", "nyáriVígSzellőSzaladALombokKözött!", camelCaseGenerator("Nyári víg szellő szalad a lombok között!"));
     }
     catch {
-        HibasFuggvenyFuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Nyári víg szellő szalad a lombok között!", "NyáriVígSzellőSzaladALombokKözött!");
+        HibasFuggvenyFuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Nyári víg szellő szalad a lombok között!", "nyáriVígSzellőSzaladALombokKözött!");
     }
 }
 
 function Teszt06() {
     try {
-        FuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Szeretem a programozást!", "SzeretemAProgramozást!", camelCaseGenerator("Szeretem a programozást!"));
+        FuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Szeretem a programozást!", "szeretemAProgramozást!", camelCaseGenerator("Szeretem a programozást!"));
     }
     catch {
-        HibasFuggvenyFuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Szeretem a programozást!", "SzeretemAProgramozást!");
+        HibasFuggvenyFuggvenyVisszajelzoSor("2. feladat: A camelCase szöveg", "Szeretem a programozást!", "szeretemAProgramozást!");
     }
 }
 

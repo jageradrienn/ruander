@@ -11,14 +11,20 @@ function EkezetesBetukSzama(modositandoSzoveg:string):number{
     return ekezetesekDb
 }
 
+//Viki így csinálta:
+/*if (ekezetesBetuk.indexOf(modositandoSzoveg[i]) >= 0) {
+      osszeg++;
+    }
+ */
+
 console.log(`1. feladat: az ékezetes betűk száma: ${EkezetesBetukSzama("Kék az ég és ragyogó a nap!")}`);
 
 //2. feladat
 
 function camelCaseGenerator(modositandoSzoveg:string):string{
-    let camelCaseSzoveg:string=modositandoSzoveg[0].toUpperCase();
+    let camelCaseSzoveg:string=modositandoSzoveg[0].toLowerCase();
     for (let i:number=1;i<modositandoSzoveg.length;i++){
-        (modositandoSzoveg[i]!=' ') ? camelCaseSzoveg+=modositandoSzoveg[i]
+        (modositandoSzoveg[i]!=' ') ? camelCaseSzoveg+=modositandoSzoveg[i].toLowerCase()
         : (camelCaseSzoveg+=modositandoSzoveg[i+1].toUpperCase(), i++)
     }
     return camelCaseSzoveg;
